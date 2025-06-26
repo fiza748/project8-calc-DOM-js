@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .div1{
+            background-color: black;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .div2{
+            background-color: rgb(20, 19, 19);
+            height: max-content;
+            width: min-content;
+            display: flex;
+            justify-content: space-evenly;
+            border-radius: 10px;
+            font-size: large;
+            font-weight: 900;
+            
+
+
+        }
+        #result{
+            width: 250px;
+            height: 100px;
+            border-radius: 5px;
+        }
+        input{
+            width: 60px;
+            height: 35px;
+            border-radius: 5px;
+        }
+        .prp{
+            background-color: rgb(81, 58, 81);
+            color: rgb(238, 20, 238);
+            
+        }
+        .black{
+            background-color: rgb(42, 43, 44);
+            color: white;
+        }
+        #output{
+            background-color: rgb(104, 241, 196);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="div1">
+        <div class="div2">
+         <form>
+            <input type="text" id="result" placeholder="0" style="text-align: right;">
+            <br>
+            <br>
+            
+            <input type="button" value="%" class="prp">
+            <input type="button" value="/" class="prp">
+            <input type="button" value="CE" id="allclear" class="prp">
+            <input type="button" value="C" id="clear" style="background-color: brown; color: rgb(65, 17, 17); " >
+            <br>
+            <br>
+            <input type="button" value="7" class="black">
+            <input type="button" value="8" class="black">
+            <input type="button" value="9" class="black">
+            <input type="button" value="*" class="prp">
+            <br>
+            <br>
+
+            <input type="button" value="4" class="black">
+            <input type="button" value="5" class="black">
+            <input type="button" value="6" class="black">
+            <input type="button" value="-" class="prp">
+            <br>
+            <br>
+
+            <input type="button" value="1" class="black">
+            <input type="button" value="2" class="black">
+            <input type="button" value="3" class="black">
+            <input type="button" value="+" class="prp">
+
+            <br>
+            <br>
+
+            <input type="button" value="." class="black">
+            <input type="button" value="0" class="black">
+            <input type="button" value="00" class="black">
+            <input type="button" value="=" id="output" >
+            
+             <br>
+             <br>
+
+         </form>
+        </div>
+        </div>
+
+    <script>
+
+        let result = document.querySelector('#result');
+        let btn = document.querySelectorAll('input');
+        let output = document.querySelector('#output');
+        let allclear = document.querySelector('#allclear');
+        let clear = document.querySelector('#clear');
+        
+        for(let i=0;i<btn.length;i++){
+            btn[i].addEventListener("click" , function(){
+                if(this.value === "CE" || this.value === "C" || this.value === "=") return;
+                let lastchar = result.value.slice(-1);
+
+                if(lastchar == "+" || lastchar == "-" || lastchar == "/" || lastchar == "*"){
+                    if(this.value == "+" || this.value == "-" || this.value == "/" || this.value == "*"){
+                         result.value = result.value;
+                    }
+                    else{
+                         result.value += this.value;
+                    }
+                   
+                }
+                else{
+                    result.value += this.value;
+                }
+            });
+        }
+
+        output.addEventListener("click" , function(){
+            result.value = eval(result.value);
+        });
+
+        allclear.addEventListener("click" , function(){
+            result.value = "";
+        });
+
+        clear.addEventListener("click", function () {
+           result.value = result.value.slice(0, -1);
+         });
+
+    </script>
+</body>
+</html>
