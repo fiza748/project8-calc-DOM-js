@@ -52,6 +52,10 @@
         #output{
             background-color: rgb(104, 241, 196);
         }
+        .btn{
+            width: 60px;
+            height: 35px;
+        }
     </style>
 </head>
 <body>
@@ -65,8 +69,8 @@
             
             <input type="button" value="%" class="prp">
             <input type="button" value="/" class="prp">
-            <input type="button" value="CE" id="allclear" class="prp">
-            <input type="button" value="C" id="clear" style="background-color: brown; color: rgb(65, 17, 17); " >
+            <button type="button" id="allclear" class="prp btn">CE</button>
+            <button type="button" class="btn" id="clear" style="background-color: brown; color: rgb(65, 17, 17); " >C</button>
             <br>
             <br>
             <input type="button" value="7" class="black">
@@ -94,7 +98,7 @@
             <input type="button" value="." class="black">
             <input type="button" value="0" class="black">
             <input type="button" value="00" class="black">
-            <input type="button" value="=" id="output" >
+            <button type="button"  id="output" class="btn">=</button>
             
              <br>
              <br>
@@ -113,7 +117,7 @@
         
         for(let i=0;i<btn.length;i++){
             btn[i].addEventListener("click" , function(){
-                if(this.value === "CE" || this.value === "C" || this.value === "=") return;
+               
                 let lastchar = result.value.slice(-1);
 
                 if(lastchar == "+" || lastchar == "-" || lastchar == "/" || lastchar == "*"){
